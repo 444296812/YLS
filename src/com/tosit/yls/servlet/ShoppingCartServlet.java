@@ -1,7 +1,9 @@
 package com.tosit.yls.servlet;
 
+import com.tosit.yls.dao.OrdersDao;
 import com.tosit.yls.dao.YlsDao;
 import com.tosit.yls.entiy.DataFile;
+import com.tosit.yls.entiy.OrdersEntiy;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,13 +23,13 @@ public class ShoppingCartServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-        List<DataFile> dataFiles=new YlsDao().query();
+        List<OrdersEntiy> ordersList=new OrdersDao().ordersQuery();
 //        int s= Integer.parseInt(req.getParameter("str_id"));
 //        req.setAttribute("str",s);
 //        int x= Integer.parseInt(req.getParameter("cultural_id"));
 //        req.setAttribute("sid",x);
 
-        req.setAttribute("dataFiles",dataFiles);
+        req.setAttribute("ordersList",ordersList);
         req.getRequestDispatcher("shopping/shoppingCart.jsp").forward(req,resp);
     }
 }

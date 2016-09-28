@@ -27,6 +27,6 @@ public class AttractionsServlet extends HttpServlet {
         int x= Integer.parseInt(req.getParameter("attractions_id"));
         req.setAttribute("str",x);
         req.setAttribute("dataFiles",dataFiles);
-        req.getRequestDispatcher("twoStage/featurespot.jsp").forward(req,resp);
+        req.getRequestDispatcher("twoStage/featureSpot.jsp").forward(req,resp);
     }
 }

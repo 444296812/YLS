@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by DELL on 2016/9/27.
- */   //景区新闻1.1详情
+ */   //推荐酒店和美食
 @WebServlet("/threeActivityRestaurant")
 public class ThreeActivityRestaurantServlet extends HttpServlet{
     @Override
@@ -24,8 +24,12 @@ public class ThreeActivityRestaurantServlet extends HttpServlet{
 
         List<DataFile> dataFiles=new YlsDao().query();
         //传递一个str过去
-        String str="图说玉龙 ·雪山餐饮";
-        req.setAttribute("str",str);
+        int s= Integer.parseInt(req.getParameter("str_id"));
+        req.setAttribute("str",s);
+
+        int x= Integer.parseInt(req.getParameter("hotel_id"));
+        req.setAttribute("sid",x);
+        //System.out.println("这是返回回来的："+x);
 
         req.setAttribute("dataFiles",dataFiles);
         req.getRequestDispatcher("threeLevel/activity.jsp").forward(req,resp);

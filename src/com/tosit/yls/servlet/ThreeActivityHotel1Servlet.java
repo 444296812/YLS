@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by DELL on 2016/9/27.
- */   //景区新闻1.1详情
+ */   //推荐酒店1
 @WebServlet("/threeActivityHotel")
 public class ThreeActivityHotel1Servlet extends HttpServlet{
     @Override
@@ -23,9 +23,13 @@ public class ThreeActivityHotel1Servlet extends HttpServlet{
         resp.setContentType("text/html;chartset=utf-8");
 
         List<DataFile> dataFiles=new YlsDao().query();
-        //传递一个str过去
-        String str="图说玉龙 · 和府皇冠假日酒店";
-        req.setAttribute("str",str);
+
+        int s= Integer.parseInt(req.getParameter("str_id"));
+        req.setAttribute("str",s);
+
+        int x= Integer.parseInt(req.getParameter("hotel_id"));
+        req.setAttribute("sid",x);
+        //System.out.println("这是返回回来的："+x);
 
         req.setAttribute("dataFiles",dataFiles);
         req.getRequestDispatcher("threeLevel/activity.jsp").forward(req,resp);

@@ -46,16 +46,21 @@
                     <!--头部导航 begin-->
                     <div class="header-nav">
                       <ul>
-                         <%--<li><a href="twoStage/featureSpot.html">景点介绍</a></li>--%>
-                         <li><a href="../twoStage/featureSpot.html">
+                         <%--<li><a href="twoStage/featurespot.jsp">景点介绍</a></li>--%>
+
+                             <li>
                              <c:forEach var="datafiles" items="${dataFiles}">
                                  <%--双重条件去重--%>
-                             <c:if test="${datafiles.columnID==1 && datafiles.id==18}">
-                              ${datafiles.conlumnName}
+                             <c:if test="${datafiles.columnID==1 && datafiles.id==19}">
+                                 <a href="attractions?attractions_id=${datafiles.id}">
+                                  ${datafiles.conlumnName}
+                                 </a>
                              </c:if>
                              </c:forEach>
-                         </a></li>
-                         <li><a href="../twoStage/travelService.html">
+                         </li>
+
+                         <%--<li><a href="twoStage/featurespot.jsp">旅游服务</a></li>--%>
+                         <li><a href="travelService">
                              <c:forEach var="datafiles" items="${dataFiles}">
                                  <%--双重条件去重--%>
                                  <c:if test="${datafiles.columnID==2 && datafiles.id==35}">
@@ -63,7 +68,9 @@
                                  </c:if>
                              </c:forEach>
                          </a></li>
-                         <li><a href="../twoStage/circuit.html">
+
+                             <%--<li><a href="twoStage/featurespot.jsp">线路推荐</a></li>--%>
+                         <li><a href="circuit">
                              <c:forEach var="datafiles" items="${dataFiles}">
                                  <%--双重条件去重--%>
                                  <c:if test="${datafiles.columnID==3 && datafiles.id==36}">
@@ -71,22 +78,28 @@
                                  </c:if>
                              </c:forEach>
                          </a></li>
-                         <li><a href="../threeLevel/featureSpot.html">
+                             <%--<li><a href="../threeLevel/culturalResources.jsp">票务预订</a></li>--%>
+                         <li>
                              <c:forEach var="datafiles" items="${dataFiles}">
                                  <%--双重条件去重--%>
                                  <c:if test="${datafiles.columnID==4 && datafiles.id==42}">
+                                 <a href="threeFeaturespot?feature_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                      ${datafiles.conlumnName}
+                                 </a>
                                  </c:if>
                              </c:forEach>
-                         </a></li>
-                         <li><a href="../threeLevel/culturalResources.html">
+                         </li>
+                             <%--<li><a href="../threeLevel/culturalResources.jsp">资源文化</a></li>--%>
+                         <li>
                              <c:forEach var="datafiles" items="${dataFiles}">
                                  <%--双重条件去重--%>
                                  <c:if test="${datafiles.columnID==5 && datafiles.id==39}">
+                                 <a href="culturalResources?cultural_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                      ${datafiles.conlumnName}
+                                 </a>
                                  </c:if>
                              </c:forEach>
-                         </a></li>
+                         </li>
                       </ul>
                     </div>
                     <!--头部导航 end-->
@@ -181,7 +194,7 @@
                                      <li class="select" onmouseover="selectSwtich('',this,'top-dh',1,'select')">
                                          <c:forEach var="datafiles" items="${dataFiles}">
                                              <%--双重条件去重--%>
-                                             <c:if test="${datafiles.columnID==6 && datafiles.id==1}">
+                                             <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
                                                  ${datafiles.conlumnName}
                                              </c:if>
                                          </c:forEach>
@@ -194,14 +207,40 @@
                              
                              <div class="scenic-text" id="top-dh0" style="display:none">
                                 <ul>
-                                   <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+
+                                    <%--   景区新闻1.1   --%>
+
+                                   <li><i class="scenic-i"></i>
+                                        <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==6 && datafiles.id==1}">
+                                             <a href="threeActivity11?activity_id1=${datafiles.id}&str_id=${datafiles.columnID}">
+                                             ${datafiles.title}
+                                             </a>
+                                           </c:if>
+                                        </c:forEach>
+
+                                  <span>
                                        <c:forEach var="datafiles" items="${dataFiles}">
                                            <%--双重条件去重--%>
                                            <c:if test="${datafiles.columnID==6 && datafiles.id==1}">
-                                               ${datafiles.title}
+                                               ${datafiles.time}
                                            </c:if>
-                                       </c:forEach>
-                                   </a><span>
+                                        </c:forEach>
+                                   </span></li>
+
+
+
+                                    <li><i class="scenic-i"></i>
+                                        <c:forEach var="datafiles" items="${dataFiles}">
+                                            <%--双重条件去重--%>
+                                            <c:if test="${datafiles.columnID==6 && datafiles.id==2}">
+                                                <a href="threeActivity12?activity_id2=${datafiles.id}&str_id=${datafiles.columnID}">
+                                                        ${datafiles.title}
+                                                </a>
+                                            </c:if>
+                                        </c:forEach>
+                                      <span>
                                        <c:forEach var="datafiles" items="${dataFiles}">
                                            <%--双重条件去重--%>
                                            <c:if test="${datafiles.columnID==6 && datafiles.id==2}">
@@ -210,23 +249,7 @@
                                        </c:forEach>
                                    </span></li>
 
-                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
-                                        <c:forEach var="datafiles" items="${dataFiles}">
-                                            <%--双重条件去重--%>
-                                            <c:if test="${datafiles.columnID==6 && datafiles.id==2}">
-                                                ${datafiles.title}
-                                            </c:if>
-                                        </c:forEach>
-                                    </a><span>
-                                       <c:forEach var="datafiles" items="${dataFiles}">
-                                           <%--双重条件去重--%>
-                                           <c:if test="${datafiles.columnID==6 && datafiles.id==3}">
-                                               ${datafiles.time}
-                                           </c:if>
-                                       </c:forEach>
-                                   </span></li>
-
-                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                         <c:forEach var="datafiles" items="${dataFiles}">
                                             <%--双重条件去重--%>
                                             <c:if test="${datafiles.columnID==6 && datafiles.id==3}">
@@ -242,7 +265,7 @@
                                        </c:forEach>
                                    </span></li>
 
-                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                         <c:forEach var="datafiles" items="${dataFiles}">
                                             <%--双重条件去重--%>
                                             <c:if test="${datafiles.columnID==6 && datafiles.id==4}">
@@ -258,7 +281,7 @@
                                        </c:forEach>
                                    </span></li>
 
-                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                    <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                         <c:forEach var="datafiles" items="${dataFiles}">
                                             <%--双重条件去重--%>
                                             <c:if test="${datafiles.columnID==6 && datafiles.id==5}">
@@ -278,24 +301,27 @@
                              
                              <%--<div class="scenic-text" id="top-dh1" style="display:block">--%>
                                 <%--<ul>--%>
-                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.html">2加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
-                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.html">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
-                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.html">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
-                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.html">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
-                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.html">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
+                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.jsp">2加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
+                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.jsp">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
+                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.jsp">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
+                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.jsp">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
+                                   <%--<li><i class="scenic-i"></i><a href="threeLevel/activity.jsp">加强组织建设 推动景区跨越发展 以优异的...</a><span>2014.09.09</span></li>--%>
                                 <%--</ul>--%>
                              <%--</div>--%>
 
                               <div class="scenic-text" id="top-dh1" style="display:block">
                                   <ul>
-                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                      <li><i class="scenic-i"></i>
+
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
                                               <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                          <a href="threeActivity21?activity_id1=${datafiles.id}&str_id=${datafiles.columnID}">
                                                   ${datafiles.title}
+                                          </a>
                                               </c:if>
                                           </c:forEach>
-                                      </a><span>
+                                      <span>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
                                               <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
@@ -304,65 +330,67 @@
                                           </c:forEach>
                                       </span></li>
 
-                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                      <li><i class="scenic-i"></i>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==55}">
+                                              <a href="threeActivity22?activity_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                                   ${datafiles.title}
+                                              </a>
                                               </c:if>
                                           </c:forEach>
-                                      </a><span>
+                                      <span>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==55}">
                                                   ${datafiles.time}
                                               </c:if>
                                           </c:forEach>
                                       </span></li>
 
-                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==56}">
                                                   ${datafiles.title}
                                               </c:if>
                                           </c:forEach>
                                       </a><span>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==56}">
                                                   ${datafiles.time}
                                               </c:if>
                                           </c:forEach>
                                       </span></li>
 
-                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==57}">
                                                   ${datafiles.title}
                                               </c:if>
                                           </c:forEach>
                                       </a><span>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==57}">
                                                   ${datafiles.time}
                                               </c:if>
                                           </c:forEach>
                                       </span></li>
 
-                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.html">
+                                      <li><i class="scenic-i"></i><a href="../threeLevel/activity.jsp">
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==58}">
                                                   ${datafiles.title}
                                               </c:if>
                                           </c:forEach>
                                       </a><span>
                                           <c:forEach var="datafiles" items="${dataFiles}">
                                               <%--双重条件去重--%>
-                                              <c:if test="${datafiles.columnID==7 && datafiles.id==44}">
+                                              <c:if test="${datafiles.columnID==7 && datafiles.id==58}">
                                                   ${datafiles.time}
                                               </c:if>
                                           </c:forEach>
@@ -477,55 +505,111 @@
                          <div class="recommend-text" id="reco-dh0" style="display:none">
 
                            <dl>
-                             <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">1冰川地质公园游</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
+                             <dt><a href="../twoStage/circuit.html">
+                                 <c:forEach var="datafiles" items="${dataFiles}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.columnID==9 && datafiles.id==10}">
+                                         <img src="${datafiles.img}">
+                                     </c:if>
+                                 </c:forEach>
+                             </a></dt>
+                             <%--<dd>--%>
+                                <%--<span class="recommend-t"><a href="../twoStage/circuit.html">1冰川地质公园游</a></span>--%>
+                                <%--<div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>--%>
 
-                               <%--<dd>--%>
-                                <%--<span class="recommend-t"><a href="twoStage/circuit.html">--%>
-                                    <%--<c:forEach var="datafiles" items="${dataFiles}">--%>
-                                        <%--&lt;%&ndash;双重条件去重&ndash;%&gt;--%>
-                                        <%--<c:if test="${datafiles.columnID==9 && datafiles.id==10}">--%>
-                                            <%--${datafiles.titlt}--%>
-                                        <%--</c:if>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</a></span>--%>
-                                   <%--<div class="recommend-txt">--%>
-                                       <%--<c:forEach var="datafiles" items="${dataFiles}">--%>
-                                           <%--&lt;%&ndash;双重条件去重&ndash;%&gt;--%>
-                                           <%--<c:if test="${datafiles.columnID==9 && datafiles.id==10}">--%>
-                                               <%--${datafiles.main}--%>
-                                           <%--</c:if>--%>
-                                       <%--</c:forEach>--%>
-                                   <%--</div>--%>
-                               <%--</dd>--%>
+                               <dd>
+                                <span class="recommend-t"><a href="TwoCircuit11">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==9 && datafiles.id==10}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==9 && datafiles.id==10}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
 
-                             </dd>
+                             <%--</dd>--%>
+                           </dl>
+
+                           <dl>
+                             <dt><a href="../twoStage/circuit.jsp">
+                                 <c:forEach var="datafiles" items="${dataFiles}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.columnID==9 && datafiles.id==11}">
+                                         <img src="${datafiles.img}">
+                                     </c:if>
+                                 </c:forEach>
+                             </a></dt>
+                               <dd>
+                                <span class="recommend-t"><a href="TwoCircuit12">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==9 && datafiles.id==11}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==9 && datafiles.id==11}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                            <dl>
                              <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">印象丽江灵魂之旅</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
+                               <dd>
+                                <span class="recommend-t"><a href="twoStage/circuit.html">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==9 && datafiles.id==12}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==9 && datafiles.id==12}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                            <dl>
                              <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">冰川地质公园游</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
-                           </dl>
-
-                           <dl>
-                             <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">印象丽江灵魂之旅</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
+                               <dd>
+                                <span class="recommend-t"><a href="twoStage/circuit.html">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==9 && datafiles.id==13}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==9 && datafiles.id==13}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                          </div>
@@ -534,34 +618,97 @@
 
                            <dl>
                              <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">2冰川地质公园游</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
+                               <dd>
+                                <span class="recommend-t"><a href="TwoCircuit21">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==10 && datafiles.id==45}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==10 && datafiles.id==45}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                            <dl>
                              <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">印象丽江灵魂之旅</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
+                               <dd>
+                                <span class="recommend-t"><a href="TwoCircuit22">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==10 && datafiles.id==59}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==10 && datafiles.id==59}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
+                           </dl>
+
+                           <dl>
+                             <dt><a href="../twoStage/circuit.html">
+                                 <c:forEach var="datafiles" items="${dataFiles}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.columnID==10 && datafiles.id==60}">
+                                         <img src="${datafiles.img}">
+                                     </c:if>
+                                 </c:forEach>
+                             </a></dt>
+                               <dd>
+                                <span class="recommend-t"><a href="twoStage/circuit.html">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==10 && datafiles.id==60}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==10 && datafiles.id==60}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                            <dl>
                              <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">冰川地质公园游</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
-                           </dl>
-
-                           <dl>
-                             <dt><a href="../twoStage/circuit.html"><img src="../images/img-01.jpg"/></a></dt>
-                             <dd>
-                                <span class="recommend-t"><a href="../twoStage/circuit.html">印象丽江灵魂之旅</a></span>
-                                <div class="recommend-txt">加强组织建设 推动景区跨越发展加强组织建设 推动景区跨越...</div>
-                             </dd>
+                               <dd>
+                                <span class="recommend-t"><a href="twoStage/circuit.html">
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==10 && datafiles.id==61}">
+                                            ${datafiles.title}
+                                        </c:if>
+                                    </c:forEach>
+                                </a></span>
+                                   <div class="recommend-txt">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==10 && datafiles.id==61}">
+                                               ${datafiles.main}
+                                           </c:if>
+                                       </c:forEach>
+                                   </div>
+                               </dd>
                            </dl>
 
                          </div>
@@ -586,22 +733,26 @@
                          <div class="recom-text">
                            <span><img src="../images/img-03.jpg"/></span>
                            <ul>
-                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i><a href="../threeLevel/activity.html">
+                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i>
                                   <c:forEach var="datafiles" items="${dataFiles}">
                                       <%--双重条件去重--%>
                                       <c:if test="${datafiles.columnID==11 && datafiles.id==14}">
+                                  <a href="threeActivityHotel?hotel_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                           ${datafiles.title}
+                                  </a>
                                       </c:if>
                                   </c:forEach>
-                              </a></li>
-                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i><a href="../threeLevel/activity.html">
+                             </li>
+                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i>
                                   <c:forEach var="datafiles" items="${dataFiles}">
                                       <%--双重条件去重--%>
                                       <c:if test="${datafiles.columnID==11 && datafiles.id==15}">
+                                  <a href="threeActivityHotel2?hotel_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                           ${datafiles.title}
+                                  </a>
                                       </c:if>
                                   </c:forEach>
-                              </a></li>
+                             </li>
                            </ul>
                          </div>
                       </div>
@@ -616,24 +767,35 @@
                              </c:forEach>
                          </a></div>
                          <div class="recom-text">
-                           <span><img src="../images/img-03.jpg"/></span>
+                           <span>
+                               <c:forEach var="datafiles" items="${dataFiles}">
+                                   <%--双重条件去重--%>
+                                   <c:if test="${datafiles.columnID==12 && datafiles.id==17}">
+                                       <img src="${datafiles.img}">
+                                   </c:if>
+                               </c:forEach>
+                           </span>
                            <ul>
-                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i><a href="../threeLevel/activity.html">
+                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i>
                                   <c:forEach var="datafiles" items="${dataFiles}">
                                       <%--双重条件去重--%>
                                       <c:if test="${datafiles.columnID==12 && datafiles.id==17}">
+                                  <a href="threeActivityRestaurant?hotel_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                           ${datafiles.title}
+                                  </a>
                                       </c:if>
                                   </c:forEach>
-                              </a></li>
-                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i><a href="../threeLevel/activity.html">
+                              </li>
+                              <li><i class="recom-ico"><img src="../images/ico-02.jpg"/></i>
                                   <c:forEach var="datafiles" items="${dataFiles}">
                                       <%--双重条件去重--%>
                                       <c:if test="${datafiles.columnID==11 && datafiles.id==16}">
+                                  <a href="threeActivityHotel3?hotel_id=${datafiles.id}&str_id=${datafiles.columnID}">
                                           ${datafiles.title}
+                                  </a>
                                       </c:if>
                                   </c:forEach>
-                              </a></li>
+                              </li>
                            </ul>
                          </div>
                       </div>
@@ -648,10 +810,10 @@
                      <!--链接 begin-->
                      <div class="scenic-ico">
                          <ul>
-                            <li><a href="../twoStage/featureSpot.html"><img src="../images/feature-01.png"/></a><span><a href="../twoStage/featureSpot.html">玉龙景点</a></span></li>
-                            <li><a href="../threeLevel/featureSpot.html"><img src="../images/feature-021.png"/></a><span><a href="../threeLevel/featureSpot.html">门&nbsp;&nbsp;票</a></span></li>
+                            <li><a href="../twoStage/featureSpot.jsp"><img src="../images/feature-01.png"/></a><span><a href="../twoStage/featureSpot.jsp">玉龙景点</a></span></li>
+                            <li><a href="../threeLevel/featurespot.jsp"><img src="../images/feature-021.png"/></a><span><a href="../threeLevel/featurespot.jsp">门&nbsp;&nbsp;票</a></span></li>
                             <li><a href="../threeLevel/tourismIndex.html"><img src="../images/feature-03.png"/></a><span><a href="../threeLevel/tourismIndex.html">景区交通</a></span></li>
-                            <li><a href="../twoStage/travelService.html"><img src="../images/feature-04.png"/></a><span><a href="../twoStage/travelService.html">客服中心</a></span></li>
+                            <li><a href="../twoStage/travelService.jsp"><img src="../images/feature-04.png"/></a><span><a href="../twoStage/travelService.jsp">客服中心</a></span></li>
                             <li><a href="../threeLevel/tourismIndex.html"><img src="../images/feature-05.png"/></a><span><a href="../threeLevel/tourismIndex.html">旅游指数</a></span></li>
                             <li><a href="../threeLevel/tourismIndex.html"><img src="../images/feature-06.png"/></a><span><a href="../threeLevel/tourismIndex.html">问卷调查</a></span></li>
                          </ul>
@@ -660,7 +822,8 @@
 
                      <!--图片按钮 begin-->
                      <div class="scenic-btn">
-                       <a href="javascript:"><img src="../images/img-04.png"/></a>
+                         <%--在线预订门票--%>
+                       <a href="featureSpot"><img src="../images/img-04.png"/></a>
                        <a href="javascript:"><img src="../images/img-05.png"/></a>
                      </div>
                      <!--图片按钮 end-->

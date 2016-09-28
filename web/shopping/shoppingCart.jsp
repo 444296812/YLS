@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,7 @@
 </head>
 
 <body>
-
+<% request.getAttribute("ordersList");%>
     <!--top flash begin-->
     <div class="YL-home-spot">
       
@@ -73,8 +74,7 @@
                              <tr  align="center" >
                                <td width="10%"height="25"><input type="checkbox"/>全选</td>
                                <td width="30%">票&nbsp;&nbsp;务</td>
-                               <td width="15%">票价</td>
-                               <td width="15%">优惠</td>
+                               <td width="15%">票价</td><%--<td width="15%">优惠</td>--%>
                                <td width="15%">数量</td>
                                <td width="15%">操作</td>
                              </tr>
@@ -85,25 +85,57 @@
                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                              <tr  align="center" >
                                <td width="10%"height="25"><input type="checkbox"/></td>
-                               <td width="30%">大玉龙雪山景区联票 </td>
-                               <td width="15%">￥315.00</td>
+                               <%--<td width="30%">大玉龙雪山景区联票 </td>--%>
+                                 <td width="30%">
+                                     <c:forEach var="datafiles" items="${ordersList}">
+                                         <%--双重条件去重--%>
+                                         <c:if test="${datafiles.ticketId==1}">
+                                             ${datafiles.ticketName}
+                                         </c:if>
+                                     </c:forEach>
+                                 </td>
+                               <%--<td width="15%">￥315.00</td>--%>
+                                 <td width="15%">
+                                     <c:forEach var="datafiles" items="${ordersList}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.ticketId==1}">
+                                        ${datafiles.ticketPrice}
+                                     </c:if>
+                                 </c:forEach>
+                                 </td>
                                <td width="15%"></td>
-                               <td width="15%"><span>-</span><input type="text" class="shopp-l"/><span>+</span></td>
+                               <%--<td width="15%"><span>-</span><input type="text" class="shopp-l"/><span>+</span></td>--%>
+                                 <td width="15%">
+                                     <c:forEach var="datafiles" items="${ordersList}">
+                                         <%--双重条件去重--%>
+                                         <c:if test="${datafiles.ticketId==1}">
+                                             <span>-</span><input type="text"class="shopp-l" value="${datafiles.ticketNum}"/><span>+</span>
+                                         </c:if>
+                                     </c:forEach></td>
                                <td width="15%"><a href="javascript:">删除</a></td>
                              </tr>
-                             <tr  align="center" >
-                               <td width="10%"height="25"><input type="checkbox"/></td>
-                               <td width="30%">大玉龙雪山景区联票 </td>
-                               <td width="15%">￥315.00</td>
-                               <td width="15%"></td>
-                               <td width="15%"><span>-</span><input type="text" class="shopp-l"/><span>+</span></td>
-                               <td width="15%"><a href="javascript:">删除</a></td>
-                             </tr>
+                             <%--<tr  align="center" >--%>
+                               <%--<td width="10%"height="25"><input type="checkbox"/></td>--%>
+                               <%--<td width="30%">大玉龙雪山景区联票 </td>--%>
+                               <%--<td width="15%">￥315.00</td>--%>
+                               <%--<td width="15%"></td>--%>
+                               <%--<td width="15%"><span>-</span><input type="text" class="shopp-l"/><span>+</span></td>--%>
+                               <%--<td width="15%"><a href="javascript:">删除</a></td>--%>
+                             <%--</tr>--%>
                            </table>
                          </div>
                          
                          <div class="shopping-btn">
-                          <a href="javascript:">确认订单</a> <span>应付总额： <font>￥575.00</font></span>
+                          <a href="cartOrders">确认订单</a>
+                             <%--<span>应付总额： <font>￥575.00</font></span>--%>
+                             <span>应付总额： <font>
+                                 <c:forEach var="datafiles" items="${ordersList}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.ticketId==1}">
+                                         ${datafiles.ticketTotal}
+                                     </c:if>
+                                 </c:forEach>
+                             </font></span>
                          </div>
                          
                        </div>

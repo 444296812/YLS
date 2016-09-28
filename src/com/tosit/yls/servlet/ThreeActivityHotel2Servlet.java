@@ -13,8 +13,8 @@ import java.util.List;
 
 /**
  * Created by DELL on 2016/9/27.
- */   //景区新闻1.1详情
-@WebServlet("/threeActivityHote2")
+ */   ////推荐酒店1
+@WebServlet("/threeActivityHotel2")
 public class ThreeActivityHotel2Servlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,8 +24,12 @@ public class ThreeActivityHotel2Servlet extends HttpServlet{
 
         List<DataFile> dataFiles=new YlsDao().query();
         //传递一个str过去
-        String str="图说玉龙 ·1.雪山金茂酒店";
-        req.setAttribute("str",str);
+        int s= Integer.parseInt(req.getParameter("str_id"));
+        req.setAttribute("str",s);
+
+        int x= Integer.parseInt(req.getParameter("hotel_id"));
+        req.setAttribute("sid",x);
+        //System.out.println("这是返回回来的："+x);
 
         req.setAttribute("dataFiles",dataFiles);
         req.getRequestDispatcher("threeLevel/activity.jsp").forward(req,resp);

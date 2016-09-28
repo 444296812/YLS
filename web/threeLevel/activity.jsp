@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,8 +11,8 @@
 </head>
 
 <body>
-    
-    
+<%request.getAttribute("dataFiles");%>
+
     <!--top flash begin-->
     <div class="YL-home-spot">
       
@@ -44,11 +45,11 @@
                     <!--头部导航 begin-->
                     <div class="header-nav">
                       <ul>
-                         <li><a href="featureSpot.html">景点介绍</a></li>
+                         <li><a href="featurespot.jsp">景点介绍</a></li>
                          <li><a href="travelService.html">旅游服务</a></li>
                          <li><a href="circuit.html">推荐线路</a></li>
-                         <li><a href="featureSpot.html">票务预订</a></li>
-                         <li><a href="culturalResources.html">资源文化</a></li>
+                         <li><a href="featurespot.jsp">票务预订</a></li>
+                         <li><a href="culturalResources.jsp">资源文化</a></li>
                       </ul>
                     </div>
                     <!--头部导航 end-->
@@ -64,26 +65,49 @@
                   
                      <!--玉龙雪山商务网-三级-景区活动 begin-->
                      <div class="stage-spot">
+                       <%--&lt;%&ndash;景区新闻1.1详情&ndash;%&gt;      <%=request.getAttribute("str")%>--%>
+
+                       <%--<div class="spot-title"><span><a href="javascript:">玉龙景点 ·  <%=request.getAttribute("str")%></a></span></div>--%>
+                           <div class="spot-title"><span><a href="javascript:">玉龙景点 ·
+                               <c:forEach var="datafiles" items="${dataFiles}">
+                                   <%--双重条件去重--%>
+                                   <c:if test="${datafiles.columnID==requestScope.get('str') && datafiles.id==requestScope.get('sid')}">
+                                       ${datafiles.title}
+                                   </c:if>
+                               </c:forEach>
+                               </a></span></div>
                        
-                       <div class="spot-title"><span><a href="javascript:">玉龙景点 · 冰川公园 THE GLACIER PARK 海拔4680米</a></span></div> 
-                       
-                       <div class="activity-lj"><a href="javascript:"><img src="../images/img-28.jpg"/></a></div>
+                       <div class="activity-lj">
+                           <a href="javascript:"><img src="../images/img-28.jpg"/></a>
+                       </div>
                        
                        <div class="travel-text">
                               
-                              <span class="travel-title">纯洁玉龙  浪漫之旅 </span>
+                              <span class="travel-title">
+                              <c:forEach var="datafiles" items="${dataFiles}">
+                                  <%--双重条件去重--%>
+                                  <c:if test="${datafiles.columnID==5 && datafiles.id==54}">
+                                      ${datafiles.title}
+                                  </c:if>
+                              </c:forEach>
+                              </span>
                               
                               <div class="travel-txt">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冰川是寒冷地区多年降雪积累、变质而形成的自然冰体。<br/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冰川分为大陆冰盖和山岳冰川,其中,山岳冰川又分为大陆型冰川和海洋型冰川。玉龙雪山的冰川属于温带海洋型冰川,因受海洋性季风影响,具有积累消融量大,冰温较高,底部滑动明显,运动较快,对气候变化反应敏感等特点<br/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;玉龙雪山全山共发育有19条现代冰川,其中,最大的一条冰川——“白水一号”冰川（即冰川公园）位于主峰扇子陡正下方,全长2.9公里。冰川的冰川是寒冷地区多年降雪积累、变质而形成的自然冰体。
-                              <span><img src="../images/img-27.jpg"/></span>
+                                  <c:forEach var="datafiles" items="${dataFiles}">
+                                      <%--双重条件去重--%>
+                                      <c:if test="${datafiles.columnID==requestScope.get('str') && datafiles.id==requestScope.get('sid')}">
+                                          <span>
+                                          <img src="${datafiles.img}"/>
+                                          </span>
+                                      </c:if>
+                                  </c:forEach>
+
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;冰川分为大陆冰盖和山岳冰川,其中,山岳冰川又分为大陆型冰川和海洋型冰川。玉龙雪山的冰川属于温带海洋型冰川,因受海洋性季风影响,具有积累消融量大,冰温较高,底部滑动明显,运动较快,对气候变化反应敏感等特点<br/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;玉龙雪山全山共发育有19条现代冰川,其中,最大的一条冰川——“白水一号”冰川（即冰川公园）位于主峰扇子陡正下方,全长2.9公里。冰川的末端是千姿百态的冰塔林,因阳光折射呈现出蓝绿色,人称“绿雪奇峰”。游客须乘坐索道方能到达冰川公园,欣赏这一奇景。<br/>  
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;玉龙雪山全山共发育有19条现代冰川,其中,最大的一条冰川——“白水一号”冰川（即冰川公园）位于主峰扇子陡正下方,全长2.9公里。冰川的末端是千姿百态的冰塔林,因阳光折射呈现出蓝绿色,人称“绿雪奇峰”。游客须乘坐索道方能到达冰川公园,欣赏这一奇景。<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;末端是千姿百态的冰塔林,因阳光折射呈现出蓝绿色,人称“绿雪奇峰”。游客须乘坐索道方能到达冰川公园,欣赏这一奇景。
-                              
+
                               </div>
-                              
+
                            </div>
                        
 
@@ -91,7 +115,14 @@
                              <div class="activity-list">
                                 <ul>
                                    <li><a href="javascript:">上一篇：空</a></li>
-                                   <li><a href="javascript:">下一篇： 纯洁玉龙  浪漫之旅 </a></li>
+                                   <li><a href="javascript:">下一篇：
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==5 && datafiles.id==54}">
+                                               ${datafiles.title}
+                                           </c:if>
+                                       </c:forEach>
+                                   </a></li>
                                 </ul>
                              </div>
                           </div>     
@@ -110,8 +141,8 @@
                      <!--链接 begin-->
                      <div class="scenic-ico">
                          <ul>
-                            <li><a href="featureSpot.html"><img src="../images/feature-01.png"/></a><span><a href="twoStage/featureSpot.html">玉龙景点</a></span></li>
-                            <li><a href="featureSpot.html"><img src="../images/feature-021.png"/></a><span><a href="threeLevel/featureSpot.html">门&nbsp;&nbsp;票</a></span></li>
+                            <li><a href="featurespot.jsp"><img src="../images/feature-01.png"/></a><span><a href="twoStage/featureSpot.html">玉龙景点</a></span></li>
+                            <li><a href="featurespot.jsp"><img src="../images/feature-021.png"/></a><span><a href="threeLevel/featureSpot.html">门&nbsp;&nbsp;票</a></span></li>
                             <li><a href="tourismIndex.html"><img src="../images/feature-03.png"/></a><span><a href="threeLevel/tourismIndex.html">景区交通</a></span></li>	
                             <li><a href="travelService.html"><img src="../images/feature-04.png"/></a><span><a href="twoStage/travelService.html">客服中心</a></span></li>
                             <li><a href="tourismIndex.html"><img src="../images/feature-05.png"/></a><span><a href="threeLevel/tourismIndex.html">旅游指数</a></span></li>

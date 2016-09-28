@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    
+<%request.getAttribute("dataFiles");%>
     <!--top flash begin-->
     <div class="YL-home-spot">
       
@@ -43,7 +44,7 @@
                     <div class="header-nav">
                       <ul>
                          <li><a href="featureSpot.jsp">景点介绍</a></li>
-                         <li><a href="travelService.html">旅游服务</a></li>
+                         <li><a href="travelService.jsp">旅游服务</a></li>
                          <li><a href="circuit.html">推荐线路</a></li>
                          <li><a href="featureSpot.jsp">票务预订</a></li>
                          <li><a href="culturalResources.html">资源文化</a></li>
@@ -73,31 +74,97 @@
                           
                           <div class="spot-route">
                           
-                             <div class="route-name"><a href="javascript:">丽江市</a></div>
+                             <%--<div class="route-name"><a href="javascript:">丽江市</a></div>--%>
+                              <%--丽江市已成功取到--%>
+                              <div class="route-name"><a href="javascript:">
+                                  <c:forEach var="datafiles" items="${dataFiles}">
+                                      <%--双重条件去重--%>
+                                      <c:if test="${datafiles.columnID==1 && datafiles.id==18}">
+                                          ${datafiles.title}
+                                      </c:if>
+                                  </c:forEach>
+                              </a></div>
                              
                              <div class="soute-ul soute-1">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">甘海子</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <span><a href="javascript:">
+                                          <c:forEach var="datafiles" items="${dataFiles}">
+                                              <%--双重条件去重--%>
+                                              <c:if test="${datafiles.columnID==1 && datafiles.id==19}">
+                                                  ${datafiles.title}
+                                              </c:if>
+                                          </c:forEach>
+                                      </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==19}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
-                                   <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
+                                   <dd><a href="javascript:">
+                                       <c:forEach var="datafiles" items="${dataFiles}">
+                                           <%--双重条件去重--%>
+                                           <c:if test="${datafiles.columnID==1 && datafiles.id==requestScope.get('str')}">
+                                           <img src="${datafiles.img}"/>
+                                           </c:if>
+                                       </c:forEach>
+                                   </a></dd>
                                 </dl>
                              </div>
                              
                              <div class="soute-li">
                                <ul>
-                                  <li><span></span><a href="javascript:">雪山高尔夫球场 </a></li>
-                                  <li><span></span><a href="javascript:">游客服务中心</a></li>
-                                  <li><span></span><a href="javascript:">雪厨餐厅</a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==20}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==21}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==22}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
                                </ul>
                              </div>
                              
                              <div class="soute-ul">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">印象丽江-雪山篇</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <%--<span><a href="javascript:">印象丽江-雪山篇</a></span>--%>
+                                       <span><a href="javascript:">
+                                           <c:forEach var="datafiles" items="${dataFiles}">
+                                               <%--双重条件去重--%>
+                                               <c:if test="${datafiles.columnID==1 && datafiles.id==23}">
+                                                   ${datafiles.title}
+                                               </c:if>
+                                           </c:forEach>
+                                       </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==23}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -105,16 +172,44 @@
                              
                              <div class="soute-li">
                                <ul>
-                                  <li><span></span><a href="javascript:">印象丽江剧场 </a></li>
-                                  <li><span></span><a href="javascript:">雪山博物馆 </a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==24}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                      <%--双重条件去重--%>
+                                      <c:if test="${datafiles.columnID==1 && datafiles.id==25}">
+                                          ${datafiles.title}
+                                      </c:if>
+                                  </c:forEach> </a></li>
                                </ul>
                              </div>
                              
                              <div class="soute-ul soute-2">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">冰川公园</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <%--<span><a href="javascript:">冰川公园</a></span>--%>
+                                       <span><a href="javascript:">
+                                           <c:forEach var="datafiles" items="${dataFiles}">
+                                               <%--双重条件去重--%>
+                                               <c:if test="${datafiles.columnID==1 && datafiles.id==26}">
+                                                   ${datafiles.title}
+                                               </c:if>
+                                           </c:forEach>
+                                       </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==26}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -122,15 +217,37 @@
                              
                              <div class="soute-li">
                                <ul>
-                                  <li><span></span><a href="javascript:">扇子峰</a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==27}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
                                </ul>
                              </div>
                              
                              <div class="soute-ul soute-2">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">蓝月谷</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <%--<span><a href="javascript:">蓝月谷</a></span>--%>
+                                      <span><a href="javascript:">
+                                          <c:forEach var="datafiles" items="${dataFiles}">
+                                              <%--双重条件去重--%>
+                                              <c:if test="${datafiles.columnID==1 && datafiles.id==29}">
+                                                  ${datafiles.title}
+                                              </c:if>
+                                          </c:forEach>
+                                      </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==29}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -138,16 +255,45 @@
                              
                              <div class="soute-li">
                                <ul>
-                                  <li><span></span><a href="javascript:">玉液湖</a></li>
-                                  <li><span></span><a href="javascript:">镜潭湖</a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==30}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
+                                  <li><span></span><a href="javascript:">
+                                      <c:forEach var="datafiles" items="${dataFiles}">
+                                          <%--双重条件去重--%>
+                                          <c:if test="${datafiles.columnID==1 && datafiles.id==31}">
+                                              ${datafiles.title}
+                                          </c:if>
+                                      </c:forEach>
+                                  </a></li>
                                </ul>
                              </div>
                              
                              <div class="soute-ul">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">云杉坪</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <%--<span><a href="javascript:">云杉坪</a></span>--%>
+                                       <span><a href="javascript:">
+                                           <c:forEach var="datafiles" items="${dataFiles}">
+                                               <%--双重条件去重--%>
+                                               <c:if test="${datafiles.columnID==1 && datafiles.id==32}">
+                                                   ${datafiles.title}
+                                               </c:if>
+                                           </c:forEach>
+                                       </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==32}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -156,8 +302,23 @@
                              <div class="soute-ul soute-3">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">牦牛坪</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <%--<span><a href="javascript:">牦牛坪</a></span>--%>
+                                      <span><a href="javascript:">
+                                          <c:forEach var="datafiles" items="${dataFiles}">
+                                              <%--双重条件去重--%>
+                                              <c:if test="${datafiles.columnID==1 && datafiles.id==33}">
+                                                  ${datafiles.title}
+                                              </c:if>
+                                          </c:forEach>
+                                      </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==33}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -170,13 +331,34 @@
                           
                           <div class="spot-classics">
                              
-                             <div class="classics-name"><a href="javascript:">丽江市</a></div>
+                             <div class="classics-name"><a href="javascript:">
+                                 <c:forEach var="datafiles" items="${dataFiles}">
+                                     <%--双重条件去重--%>
+                                     <c:if test="${datafiles.columnID==1 && datafiles.id==18}">
+                                         ${datafiles.title}
+                                     </c:if>
+                                 </c:forEach>
+                             </a></div>
                              
                              <div class="classics-ul soute-4">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">玉水寨</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <span><a href="javascript:">
+                                          <c:forEach var="datafiles" items="${dataFiles}">
+                                              <%--双重条件去重--%>
+                                              <c:if test="${datafiles.columnID==1 && datafiles.id==34}">
+                                                  ${datafiles.title}
+                                              </c:if>
+                                          </c:forEach>
+                                      </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==34}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -185,8 +367,22 @@
                              <div class="classics-ul soute-5">
                                 <dl>
                                    <dt>
-                                      <span><a href="javascript:">玉水寨</a></span>
-                                      <div>看点：甘海子位于玉龙雪山东麓,原为高山冰蚀湖泊,人称<br/>&nbsp;&nbsp;&nbsp;&nbsp;“干海子”,这里是纵览玉龙雪山全貌的最佳位置</div>
+                                      <span><a href="javascript:">
+                                          <c:forEach var="datafiles" items="${dataFiles}">
+                                              <%--双重条件去重--%>
+                                              <c:if test="${datafiles.columnID==1 && datafiles.id==67}">
+                                                  ${datafiles.title}
+                                              </c:if>
+                                          </c:forEach>
+                                      </a></span>
+                                      <div>
+                                    <c:forEach var="datafiles" items="${dataFiles}">
+                                        <%--双重条件去重--%>
+                                        <c:if test="${datafiles.columnID==1 && datafiles.id==67}">
+                                            ${datafiles.main}
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
                                    </dt>
                                    <dd><a href="javascript:"><img src="../images/img-11.jpg"/></a></dd>
                                 </dl>
@@ -213,7 +409,7 @@
                             <li><a href="featureSpot.jsp"><img src="../images/feature-01.png"/></a><span><a href="twoStage/featureSpot.html">玉龙景点</a></span></li>
                             <li><a href="featureSpot.jsp"><img src="../images/feature-021.png"/></a><span><a href="threeLevel/featureSpot.html">门&nbsp;&nbsp;票</a></span></li>
                             <li><a href="tourismIndex.html"><img src="../images/feature-03.png"/></a><span><a href="threeLevel/tourismIndex.html">景区交通</a></span></li>	
-                            <li><a href="travelService.html"><img src="../images/feature-04.png"/></a><span><a href="twoStage/travelService.html">客服中心</a></span></li>
+                            <li><a href="travelService.jsp"><img src="../images/feature-04.png"/></a><span><a href="twoStage/travelService.html">客服中心</a></span></li>
                             <li><a href="tourismIndex.html"><img src="../images/feature-05.png"/></a><span><a href="threeLevel/tourismIndex.html">旅游指数</a></span></li>
                             <li><a href="tourismIndex.html"><img src="../images/feature-06.png"/></a><span><a href="threeLevel/tourismIndex.html">问卷调查</a></span></li>
                          </ul>
