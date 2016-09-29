@@ -1,3 +1,5 @@
+<%@ page import="com.tosit.yls.dao.InformationDao" %>
+<%--<%@ page import="com.tosit.yls.dao.InformationDao" language="java" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -6,8 +8,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>玉龙雪山商务网-二级景点票务</title>
 <link rel="stylesheet" type="text/css" href="../css/css.css"/>
+    <style type="text/css" ></style>
 <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="../js/room-flash.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //设置隐藏功能，点击加入购物车时，就隐藏，并且将数据加入到数据库
+           $("#cart").click(function(){$("#cart").slideToggle("slow")});
+       })
+        function addCart(x){
+
+            //创建xmlHttp对象
+            var xmlHttp = new XMLHttpRequest();
+            //给xmlhttp绑定状态改变事件
+            xmlHttp.onreadystatechange=function(){
+                if(xmlHttp.readyState==4 && xmlHttp.status==200){
+                    var result = xmlHttp.responseText;
+                    //alert(result);
+                }
+            }
+            var src="featureSpot?goods_id="+x;
+            //设置请求路径
+            xmlHttp.open("post",src,true);
+            //发送请求
+            xmlHttp.send();
+
+        }
+    </script>
 </head>
 
 <body>
@@ -21,10 +48,8 @@
     <div class="YL-body">
        
            <div class="YL-w1060">
-              
                <!--jokul top begin-->
                <div class="YL-header YL-w-header">
-                  
                     <!--logo begin-->
                     <div class="header-logo w-logo"><a href="javascript:"><img src="../images/logo2.png"/></a></div>
                     <!--logo end-->
@@ -102,8 +127,15 @@
                                      </c:if>
                                      </c:forEach>
                                  </span>
-                                 <a href="javascript:" class="feature-r">加入<br/>购物车</a>
-                                 <a href="javascript:" class="feature-l">立即<br/>购买</a>
+                                 <%--<c:forEach var="datafiles" items="${dataFiles}">--%>
+                                     <%--<a href="onload?goods_id=${datafiles.goodsID}" class="feature-r" id="cart">加入<br/>购物车</a>--%>
+                                 <%--</c:forEach>--%>
+                                 <c:forEach var="datafiles" items="${dataFiles}">
+                                 <a href="#" class="feature-r" id="cart" onclick="addCart(${datafiles.goodsID})">加入<br/>购物车</a>
+                                 <%--<a href="cartOrders" class="feature-l">立即<br/>购买</a>--%>
+                                 <%--<c:forEach var="datafiles" items="${dataFiles}">--%>
+                                 <a href="cartOrders?goods_name=${datafiles.goodsName}&goods_price=${datafiles.goodsPrice}" class="feature-l">立即<br/>购买</a>
+                                 </c:forEach>
                                </div>
                            </li>
                            <%--<li>--%>
@@ -274,9 +306,9 @@
                                  <%--<a href="javascript:" class="feature-l">立即<br/>购买</a>--%>
                                <%--</div>--%>
                            <%--</li>--%>
-                         <%--</ul>--%>
-                       <%--</div>        --%>
-                       <div class="feature-b"> <a href="javascript:">购物车购买</a></div>
+                         </ul>
+                       </div>
+                       <div class="feature-b"> <a href="cart">购物车购买</a></div>
                      </div>
                      <!--玉龙雪山商务网-三级-景点+票务 end-->
                   
@@ -377,6 +409,6 @@
            <!--footer end-->
        
     </div>
-<script type="text/jscript" src="js/mouse.js"></script>    
+<script type="text/jscript" src="js/mouse.js"></script>
 </body>
 </html>

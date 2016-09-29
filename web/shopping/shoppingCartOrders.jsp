@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,8 @@
 </head>
 
 <body>
-
+<% request.getAttribute("dataFiles");%>
+<% request.getAttribute("ordersList");%>
     <!--top flash begin-->
     <div class="YL-home-spot">
       
@@ -70,25 +72,25 @@
                          
                           <h2 class="shopping-title">取票人信息</h2>
                           
-                       
-                        <div class="shopping-input">
+                       <form action="ListServlet" method="post">
+                         <div class="shopping-input">
                           <dl>
                              <dt>取票人姓名</dt>
-                             <dd><input type="text" class="shopp-check"/></dd>
+                             <dd><input type="text" name="useName" class="shopp-check"/></dd>
                           </dl>
                           <dl>
                              <dt>取票人证件</dt>
-                             <dd><input type="text" class="shopp-check"/></dd>
+                             <dd><input type="text" name="zhenJian" class="shopp-check"/></dd>
                           </dl>
                           <dl>
                              <dt>取票电话</dt>
-                             <dd><input type="text" class="shopp-check"/></dd>
+                             <dd><input type="text" name="phone" class="shopp-check"/></dd>
                           </dl>
                          </div> 
                          
                          <h2 class="shopping-title">支付方式 </h2>
                          
-                         <div class="shopping-fs">银行卡在线支付</div>
+                         <div class="shopping-fs" >银行卡在线支付</div>
                          
                          <h2 class="shopping-title">商品清单 </h2>
                          
@@ -96,24 +98,40 @@
                          <div class="shopping-list">
                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
                              <tr>
-                               <td width="40%" align="center" height="55">大玉龙雪山景区联票 </td>
-                               <td width="30%">￥315.00</td>
-                               <td width="30%">*1</td>
+                               <td width="40%" align="center" height="55" name="ticketName">
+                                   <c:forEach var="ordersList" items="${ordersList}">
+                                        ${ordersList.ticketName}
+                                   </c:forEach>
+                                   </td>
+                               <td width="30%" name="ticketPrice">
+                                   <c:forEach var="ordersList" items="${ordersList}">
+                                   ${ordersList.ticketPrice}
+                                   </c:forEach>
+                               </td>
+                               <td width="30%" name="ticketNum">
+                                   <c:forEach var="ordersList" items="${ordersList}">
+                                   *${ordersList.ticketNum}
+                               </c:forEach>
+                               </td>
                              </tr>
-                             <tr>
-                               <td width="40%" align="center" height="55">大玉龙雪山景区联票 </td>
-                               <td width="30%">￥315.00</td>
-                               <td width="30%">*1</td>
-                             </tr>
+                             <%--<tr>--%>
+                               <%--<td width="40%" align="center" height="55">大玉龙雪山景区联票 </td>--%>
+                               <%--<td width="30%">￥315.00</td>--%>
+                               <%--<td width="30%">*1</td>--%>
+                             <%--</tr>--%>
                            </table>
                          </div>
                          
                          <div class="shopping-btn">
-                          <a href="javascript:">提交订单</a> <span>应付总额： <font>￥575.00</font></span>
+                          <a href="javascript:"><input type="submit" value="提交订单" style="margin-top: 12px"/></a> <span>应付总额： <font name="ticketTotal">
+                             <c:forEach var="ordersList" items="${ordersList}">
+                                 ￥${ordersList.ticketTotal}
+                             </c:forEach>
+                         </font></span>
                          </div>
-                         
+                       </form>
                        </div>
-                               
+
                        
                      </div>
                      <!--玉龙雪山商务网-三级-景点+票务 end-->

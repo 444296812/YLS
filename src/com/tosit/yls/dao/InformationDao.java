@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2016/9/28 0028.
  */
 public class InformationDao {
-    final static String url="jdbc:mysql://localhost:3306/download";
+    final static String url="jdbc:mysql://localhost:3306/project";
     final static String user="root";
     final static String password="root";
     static {
@@ -32,7 +32,6 @@ public class InformationDao {
             }
             return listOrder;
         } catch (SQLException e) {
-            e.printStackTrace();
             return null;
         }finally {
             try {

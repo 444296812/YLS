@@ -40,4 +40,35 @@ public class OrdersDao {
             ;
         }
     }
+
+    //将点击立即购买时候取到的数据通过dao，传到数据库
+    public void addOrder(OrdersEntiy ordersEntiy){
+        Connection conn=null;
+        try {
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+            PreparedStatement ps=conn.prepareStatement("insert into orders (ticketId,ticketName,ticketPrice,ticketNum,ticketTotal)values(?,?,?,?,?)");
+
+            ps.setInt(1,ordersEntiy.getTicketId());
+            ps.setString(2,ordersEntiy.getTicketName());
+            ps.setDouble(3,ordersEntiy.getTicketPrice());
+            ps.setInt(4,ordersEntiy.getTicketNum());
+            ps.setDouble(5,ordersEntiy.getTicketTotal());
+
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        OrdersDao ordersDao=new OrdersDao();
+
+    }
 }

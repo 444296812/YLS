@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by DELL on 2016/9/26.
  */
-public class YlsDao {
+public  class YlsDao {
     static {
         try {
             Class.forName("com.mysql.jdbc.Driver");

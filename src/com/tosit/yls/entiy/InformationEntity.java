@@ -13,6 +13,10 @@ public class InformationEntity {
     public InformationEntity() {
     }
 
+    public InformationEntity(int goodsID) {
+        this.goodsID = goodsID;
+    }
+
     public InformationEntity(int goodsID, String goodsName, String goodsMain, String goodsSrc, double goodsPrice) {
         this.goodsID = goodsID;
         this.goodsName = goodsName;
